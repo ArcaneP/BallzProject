@@ -24,6 +24,7 @@ public class FinishLine : MonoBehaviour
 
     private void Start()
     {
+        curFillAmountText.SetText(counter.ToString() + "/" + endGoal);
         gameMan = GameObject.FindObjectOfType<GameManager>();
         startTimer = timer;
     }
