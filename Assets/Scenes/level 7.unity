@@ -1016,8 +1016,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514395448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0066, y: -2.3, z: 0}
-  m_LocalScale: {x: 2.2885, y: -0.084, z: 1}
+  m_LocalPosition: {x: 0.0066, y: -3.235, z: 0}
+  m_LocalScale: {x: 1.8249778, y: -0.084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539066717}
@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 4133682565003137593, guid: de721efb030090246a4b8290b89194cb, type: 3}
   spawnPos: {fileID: 1531563899}
-  maxBalls: 30
+  maxBalls: 50
 --- !u!4 &692131035
 Transform:
   m_ObjectHideFlags: 0
@@ -2829,8 +2829,7 @@ MonoBehaviour:
   curFillAmountText: {fileID: 1377280902}
   image: {fileID: 1608713570}
   counter: 0
-  endGoal: 46
-  range: 5
+  endGoal: 15
   timer: 10
 --- !u!1 &1830150274
 GameObject:
