@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 120;
+        Application.targetFrameRate = 100;
         if(PlayerPrefs.GetInt("hp") > 0)
         {
             curHealth = PlayerPrefs.GetInt("hp");
