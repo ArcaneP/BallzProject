@@ -6,18 +6,24 @@ public class OpenHatcg : MonoBehaviour
 {
     public GameObject hatch;
     int asd = 0;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GameObject.FindObjectOfType<Animator>();
+    }
 
     public void Open()
     {
 
         if(asd == 0)
         {
-            hatch.SetActive(false);
+            anim.SetBool("isOpen", false);
             asd = 1;
         }
         else
         {
-            hatch.SetActive(true);
+            anim.SetBool("isOpen", true);
             asd = 0;
         }
     }

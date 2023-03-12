@@ -6,7 +6,7 @@ using TMPro;
 
 public class FinishLine : MonoBehaviour
 {
-    public GameObject blocker;
+    public GameObject hatch;
 
     private GameManager gameMan;
 
@@ -22,8 +22,11 @@ public class FinishLine : MonoBehaviour
 
     private float startTimer;
 
+    private Animator anim;
+
     private void Start()
     {
+        anim = hatch.GetComponent<Animator>();
         curFillAmountText.SetText(counter.ToString() + "/" + endGoal);
         gameMan = GameObject.FindObjectOfType<GameManager>();
         startTimer = timer;
@@ -43,7 +46,7 @@ public class FinishLine : MonoBehaviour
 
     IEnumerator waitTimer()
     {
-        blocker.SetActive(true);
+        anim.SetBool("isOpen", true);
         yield return new WaitForSeconds(3f);
     }
 
@@ -63,7 +66,7 @@ public class FinishLine : MonoBehaviour
 
             if(timer <= 0)
             {
-                blocker.SetActive(true);
+                anim.SetBool("isOpen", true);
 
                 if (counter >= endGoal - range && counter <= endGoal + range)
                 {
