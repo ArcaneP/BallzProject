@@ -14,7 +14,9 @@ public class Spawner : MonoBehaviour
     {
         if(counter != maxBalls)
         {
-            Instantiate(ball, spawnPos.position, Quaternion.identity);
+          var newspawnPos =  new Vector2(spawnPos.position.x + Random.Range(0, 0.5f), spawnPos.position.y + Random.Range(0, 0.5f));
+
+            Instantiate(ball, newspawnPos, Quaternion.identity);
             counter++;
         }
     }
