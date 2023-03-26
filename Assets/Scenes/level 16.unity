@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 4133682565003137593, guid: de721efb030090246a4b8290b89194cb, type: 3}
   spawnPos: {fileID: 1531563899}
-  maxBalls: 200
+  maxBalls: 100
 --- !u!4 &692131035
 Transform:
   m_ObjectHideFlags: 0
