@@ -580,7 +580,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 659486343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1058383563}
+        m_TargetAssemblyTypeName: mapSelectorCode, Assembly-CSharp
+        m_MethodName: rightButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &659486343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +748,8 @@ MonoBehaviour:
   levels:
   - {fileID: 21300000, guid: 2efdc01f993e1c84f9106dd1c8a24ae6, type: 3}
   - {fileID: 21300000, guid: 83f51895793fbd045972f1e0c250638c, type: 3}
+  - {fileID: 21300000, guid: 868ca37c40f156a4bb0db8fecef41152, type: 3}
+  - {fileID: 21300000, guid: 76beef9fdae7b48468ddf07d0400a374, type: 3}
 --- !u!114 &1058383563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,7 +1007,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1633922357}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1058383563}
+        m_TargetAssemblyTypeName: mapSelectorCode, Assembly-CSharp
+        m_MethodName: leftButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1633922357
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class mapSelectorCode : MonoBehaviour
         levelPointer = 0;
         iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
 
+        Debug.Log("levellist is: " + levelList.levels.Length);
     }
 
     public void rightButton()
@@ -28,6 +29,8 @@ public class mapSelectorCode : MonoBehaviour
         if(levelPointer == levelList.levels.Length - 1)
         {
             levelPointer = 0;
+            iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
         }
     }
+
 }
