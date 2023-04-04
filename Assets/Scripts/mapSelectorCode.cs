@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class mapSelectorCode : MonoBehaviour
 {
     public LevelList levelList;
@@ -10,6 +13,8 @@ public class mapSelectorCode : MonoBehaviour
     public GameObject iconOBJ;
 
     public GameObject buttonLeft, buttonRight;
+
+    public TextMeshProUGUI UIText;
 
     private void Start()
     {
@@ -22,6 +27,8 @@ public class mapSelectorCode : MonoBehaviour
         {
             buttonLeft.gameObject.SetActive(false);
         }
+
+        UIText.SetText("LEVEL: " + (levelPointer + 1));
     }
 
     public void rightButton()
@@ -30,6 +37,7 @@ public class mapSelectorCode : MonoBehaviour
         if (levelPointer < levelList.levels.Length - 1)
         {
             levelPointer++;
+            UIText.SetText("LEVEL: " + (levelPointer + 1) );
             Debug.Log(levelPointer);
             iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
         }
@@ -52,9 +60,10 @@ public class mapSelectorCode : MonoBehaviour
             if(levelPointer >= 0)
             {
                 levelPointer--;
+                UIText.SetText("LEVEL: " + (levelPointer + 1) );
             }
-                Debug.Log(levelPointer);
-                iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
+            Debug.Log(levelPointer);
+            iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
         }
 
         if (levelPointer == 0)
@@ -67,6 +76,11 @@ public class mapSelectorCode : MonoBehaviour
             buttonRight.gameObject.SetActive(true);
         }
 
+    }
+
+    public void LoadMap()
+    {
+        SceneManager.LoadScene("level "+ (levelPointer+1)    );
     }
 
 }
