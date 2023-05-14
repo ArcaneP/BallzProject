@@ -37,6 +37,7 @@ public class FinishLine : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Collider2D>() && collision.gameObject.name != "x")
         {
+            collision.GetComponent<PushOnIdle>().enabled = false;
             collision.gameObject.name = "x";
             counter++;
 

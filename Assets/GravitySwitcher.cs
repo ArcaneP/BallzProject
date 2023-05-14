@@ -15,16 +15,20 @@ public class GravitySwitcher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.tag == "golyo")
+        {
+
         switch (type)
         {
             case GravType.minus:
-                Debug.Log("minus");
+                //Debug.Log("minus");
                 other.GetComponent<Rigidbody2D>().gravityScale = gravscale;
                 break;
             case GravType.plus:
-                Debug.Log("plus");
+                //Debug.Log("plus");
                 other.GetComponent<Rigidbody2D>().gravityScale = -gravscale;
                 break;
+        }
         }
     }
 }
