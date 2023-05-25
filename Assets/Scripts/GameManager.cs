@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,24 @@ public class GameManager : MonoBehaviour
     private Image heart2;
     private Image heart3;
 
+    [SerializeField] private GameObject showADbutton; //only show when health is bellow max
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     private void Start()
     {
         SelectHeartImages();
@@ -26,6 +45,8 @@ public class GameManager : MonoBehaviour
         {
             curHealth = PlayerPrefs.GetInt("hp");
         }
+
+        ShowADButton();
     }
 
     void SelectHeartImages()
@@ -39,8 +60,18 @@ public class GameManager : MonoBehaviour
         hearts[0] = heart1;
         hearts[1] = heart2;
         hearts[2] = heart3;
+    }
 
-
+    void ShowADButton()
+    {
+        if(curHealth < maxHealth)
+        {
+            showADbutton.SetActive(true);
+        }
+        else
+        {
+            showADbutton.SetActive(false);
+        }
     }
 
     private void Update()
