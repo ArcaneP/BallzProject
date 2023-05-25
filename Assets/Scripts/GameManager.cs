@@ -13,13 +13,34 @@ public class GameManager : MonoBehaviour
 
     public Image[] hearts;
 
+    private Image heart1;
+    private Image heart2;
+    private Image heart3;
+
     private void Start()
     {
+        SelectHeartImages();
+
         Application.targetFrameRate = 100;
         if(PlayerPrefs.GetInt("hp") > 0)
         {
             curHealth = PlayerPrefs.GetInt("hp");
         }
+    }
+
+    void SelectHeartImages()
+    {
+        heart1 = GameObject.FindGameObjectWithTag("h1").GetComponent<Image>();
+        heart2 = GameObject.FindGameObjectWithTag("h2").GetComponent<Image>();
+        heart3 = GameObject.FindGameObjectWithTag("h3").GetComponent<Image>();
+
+        // Assign the heart images to the corresponding array elements
+        hearts = new Image[3];
+        hearts[0] = heart1;
+        hearts[1] = heart2;
+        hearts[2] = heart3;
+
+
     }
 
     private void Update()
@@ -82,5 +103,7 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         winscreen.SetActive(true);
+        Time.timeScale = 0;
+
     }
 }

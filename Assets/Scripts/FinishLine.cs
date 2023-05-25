@@ -24,6 +24,12 @@ public class FinishLine : MonoBehaviour
 
     private Animator anim;
 
+    private void Awake()
+    {      
+        curFillAmountText = GameObject.FindGameObjectWithTag("fillText").GetComponent<TextMeshProUGUI>();
+        image = GameObject.FindGameObjectWithTag("fillicon").GetComponent<Image>();
+    }
+
     private void Start()
     {
         hatch = GameObject.FindGameObjectWithTag("Holder");
@@ -31,13 +37,14 @@ public class FinishLine : MonoBehaviour
         curFillAmountText.SetText(counter.ToString() + "/" + endGoal);
         gameMan = GameObject.FindObjectOfType<GameManager>();
         startTimer = timer;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Collider2D>() && collision.gameObject.name != "x")
         {
-            collision.GetComponent<PushOnIdle>().enabled = false;
+            //collision.GetComponent<PushOnIdle>().enabled = false;
             collision.gameObject.name = "x";
             counter++;
 
@@ -60,6 +67,8 @@ public class FinishLine : MonoBehaviour
 
         if (startcount)
         {
+            Time.timeScale = 1;
+
 
             if(timer > 0)
             {

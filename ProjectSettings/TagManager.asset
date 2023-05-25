@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Holder
   - golyo
+  - fillText
+  - fillicon
+  - heartContainer
+  - h1
+  - h2
+  - h3
   layers:
   - Default
   - TransparentFX
