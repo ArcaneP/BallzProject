@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private string curSceneName;
+    [SerializeField] private int number;
+
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -37,7 +42,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {    
         SelectHeartImages();
 
         Application.targetFrameRate = 100;
@@ -46,20 +51,47 @@ public class GameManager : MonoBehaviour
             curHealth = PlayerPrefs.GetInt("hp");
         }
 
-        ShowADButton();
+        if(SceneManager.GetActiveScene().name == "menu")
+        {
+            ShowADButton();
+        }
+
+    }
+
+    public void ChangeLevelIndex()
+    {
+        curSceneName = SceneManager.GetActiveScene().name;
+        number = int.Parse(Regex.Match(curSceneName, @"\d+").Value);
+
+        PlayerPrefs.SetInt("lastSceneName", number);
+
+    }
+
+    public void ChangeNextLevelIndex()
+    {
+        curSceneName = SceneManager.GetActiveScene().name;
+        number = int.Parse(Regex.Match(curSceneName, @"\d+").Value);
+
+        PlayerPrefs.SetInt("lastSceneName", number +1);
+
+    }
+
+    public void ChangeLevelIdx(int num)
+    {
+        PlayerPrefs.SetInt("lastSceneName", num);
     }
 
     void SelectHeartImages()
     {
-        heart1 = GameObject.FindGameObjectWithTag("h1").GetComponent<Image>();
-        heart2 = GameObject.FindGameObjectWithTag("h2").GetComponent<Image>();
-        heart3 = GameObject.FindGameObjectWithTag("h3").GetComponent<Image>();
-
         // Assign the heart images to the corresponding array elements
         hearts = new Image[3];
-        hearts[0] = heart1;
-        hearts[1] = heart2;
-        hearts[2] = heart3;
+
+        if(heart1 == null) { heart1 = GameObject.FindGameObjectWithTag("h1").GetComponent<Image>(); hearts[0] = heart1; }
+
+        if (heart2 == null) { heart2 = GameObject.FindGameObjectWithTag("h2").GetComponent<Image>(); hearts[1] = heart2; }
+
+        if (heart3 == null) { heart3 = GameObject.FindGameObjectWithTag("h3").GetComponent<Image>(); hearts[2] = heart3; }
+
     }
 
     void ShowADButton()
@@ -88,6 +120,20 @@ public class GameManager : MonoBehaviour
             }
         } 
     }
+
+    public void LoadLastLevel()
+    {
+        if(PlayerPrefs.GetInt("lastSceneName") != 0)
+        {
+            Debug.Log("level " + PlayerPrefs.GetInt("lastSceneName"));
+            SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));           
+        }
+        else
+        {
+            SceneManager.LoadScene("level 1");
+            PlayerPrefs.SetInt("lastSceneName", 1);
+        } 
+    } 
 
     public void TakeDamage(int damage)
     {       

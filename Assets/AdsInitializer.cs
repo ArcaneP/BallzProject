@@ -107,6 +107,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         Debug.Log("rewarded Player");
 
         GameManager.Instance.HealPlayer(1);
+        PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+
     }
 
     public void LoadBannerAd()

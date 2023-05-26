@@ -23,5 +23,6 @@ public class GameFinishedButton : MonoBehaviour
     public void NextButton()
     {
         SceneManager.LoadScene("level "+ (number + 1));
+        GameManager.Instance.ChangeNextLevelIndex(); //set playerprefab levelindex to +1 cause its the next level that should be saved to come back to later
     }
 }

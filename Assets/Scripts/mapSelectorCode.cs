@@ -80,7 +80,8 @@ public class mapSelectorCode : MonoBehaviour
 
     public void LoadMap()
     {
-        SceneManager.LoadScene("level "+ (levelPointer+1)    );
+        SceneManager.LoadScene("level "+ (levelPointer+1));
+        GameManager.Instance.ChangeLevelIdx(levelPointer + 1);
     }
 
 }
