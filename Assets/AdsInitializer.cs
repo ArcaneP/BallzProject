@@ -45,7 +45,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     {
         Debug.Log("Unity Ads initialization complete.");
         //LoadInerstitialAd();
-        //LoadBannerAd();
+        LoadBannerAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
@@ -106,7 +106,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     {
         Debug.Log("rewarded Player");
 
-        GameManager.Instance.curHealth += 1;
+        GameManager.Instance.HealPlayer(1);
     }
 
     public void LoadBannerAd()

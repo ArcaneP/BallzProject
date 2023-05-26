@@ -115,6 +115,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void HealPlayer(int health)
+    {
+        curHealth += health;
+
+        if (curHealth < maxHealth)
+        {
+            showADbutton.SetActive(true);
+        }
+        else
+        {
+            showADbutton.SetActive(false);
+        }
+    }
+
     public void TryAgainButton()
     {
         PlayerPrefs.SetInt("hp", maxHealth);
