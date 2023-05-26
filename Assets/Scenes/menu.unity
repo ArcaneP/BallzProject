@@ -3115,7 +3115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d83edc985765824b87a97838e0b1b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHealth: 3
+  curHealth: 0
   maxHealth: 3
   winscreen: {fileID: 0}
   losescreen: {fileID: 0}

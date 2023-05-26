@@ -39,10 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-    }
 
-    private void Start()
-    {    
         SelectHeartImages();
 
         Application.targetFrameRate = 100;
@@ -55,8 +52,8 @@ public class GameManager : MonoBehaviour
         {
             ShowADButton();
         }
-
     }
+
 
     public void ChangeLevelIndex()
     {
@@ -177,6 +174,8 @@ public class GameManager : MonoBehaviour
 
     public void TryAgainButton()
     {
+        AdsInitializer.Instance.LoadInerstitialAd();
+
         PlayerPrefs.SetInt("hp", maxHealth);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
