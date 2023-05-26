@@ -18,17 +18,40 @@ public class mapSelectorCode : MonoBehaviour
 
     private void Start()
     {
-        levelPointer = 0;
+
+        if(PlayerPrefs.GetInt("lastSceneName") == 0)
+        {
+            levelPointer = 0;
+        }
+        else
+        {
+         levelPointer = (PlayerPrefs.GetInt("lastSceneName") - 1);
+        }
+
+
+
         iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
 
         Debug.Log("levellist is: " + levelList.levels.Length);
 
-        if(levelPointer == 0)
+        if(levelPointer <= 1)
         {
             buttonLeft.gameObject.SetActive(false);
+        }else
+        {
+            buttonLeft.gameObject.SetActive(true);
         }
 
-        UIText.SetText("LEVEL: " + (levelPointer + 1));
+        if (levelPointer == levelList.levels.Length - 1)
+        {
+            buttonRight.gameObject.SetActive(false);
+        }
+        else
+        {
+            buttonRight.gameObject.SetActive(true);
+        }
+
+        UIText.SetText("LEVEL: " + PlayerPrefs.GetInt("lastSceneName"));
     }
 
     public void rightButton()

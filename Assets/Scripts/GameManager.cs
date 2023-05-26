@@ -29,6 +29,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (PlayerPrefs.GetInt("hp") > maxHealth)
+        {
+            curHealth = maxHealth;
+            PlayerPrefs.SetInt("hp", curHealth);
+        }
+
+
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
@@ -160,7 +167,14 @@ public class GameManager : MonoBehaviour
 
     public void HealPlayer(int health)
     {
-        curHealth += health;
+        if(curHealth > maxHealth)
+        {
+            curHealth = maxHealth;
+        }
+        else
+        {
+            curHealth += health;
+        }
 
         if (curHealth < maxHealth)
         {
@@ -176,10 +190,10 @@ public class GameManager : MonoBehaviour
     {
         AdsInitializer.Instance.LoadInerstitialAd();
 
-        PlayerPrefs.SetInt("hp", maxHealth);
+        PlayerPrefs.SetInt("hp", 1);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-        Time.timeScale = 1; 
+
     }
 
     void GameOver()

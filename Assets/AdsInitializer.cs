@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -10,13 +12,23 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     public static AdsInitializer Instance { get; private set; }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            GameManager.Instance.TakeDamage(1);
+        }
+    }
+
     private void Awake()
     {
+
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(GameObject.FindAnyObjectByType<AdsInitializer>());
         }
         else
         {
@@ -24,11 +36,14 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         }
 
         DontDestroyOnLoad(this.gameObject);
+        
+        
 
         if (Advertisement.isInitialized)
         {
             Debug.Log("Advertisement is Initialized");
-            LoadRewardedAd();
+            //LoadRewardedAd(); //testing
+            LoadInerstitialAd();
         }
         else
         {
@@ -60,13 +75,14 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     public void LoadRewardedAd()
     {
+        Debug.Log("LoadRewardedAd - mode: Rewarded_Android");
         Advertisement.Load("Rewarded_Android", this);
     }
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
         Debug.Log("OnUnityAdsAdLoaded");
-        Advertisement.Show(placementId, this);
+        Advertisement.Show(placementId, this); //not this
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
@@ -83,7 +99,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     {
         Debug.Log("OnUnityAdsShowStart");
         Time.timeScale = 0;
-        Advertisement.Banner.Hide();
+        Advertisement.Banner.Hide(); //why does it show a rewared ad every time
     }
 
     public void OnUnityAdsShowClick(string placementId)
