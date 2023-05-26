@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219699848228556897, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: menu
+      value: levels
       objectReference: {fileID: 0}
     - target: {fileID: 3219699848631706992, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1072,6 +1072,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   showADbutton: {fileID: 0}
+  curSceneName: 
+  number: 0
 --- !u!4 &1940754451
 Transform:
   m_ObjectHideFlags: 0
