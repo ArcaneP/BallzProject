@@ -10,8 +10,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     string _gameId;
     [SerializeField] bool _testMode = true;
 
-    public static AdsInitializer Instance { get; private set; }
-
+    public static AdsInitializer Instance;
 
     private void Update()
     {
@@ -24,20 +23,16 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     private void Awake()
     {
 
-        // If there is an instance, and it's not me, delete myself.
-
+        // Check if an instance already exists
         if (Instance != null && Instance != this)
         {
-            Destroy(GameObject.FindAnyObjectByType<AdsInitializer>());
-        }
-        else
-        {
-            Instance = this;
+            Destroy(gameObject); // Destroy duplicate instances
+            return;
         }
 
-        DontDestroyOnLoad(this.gameObject);
-        
-        
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // Make this object persistent across scenes
+
 
         if (Advertisement.isInitialized)
         {
@@ -50,6 +45,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
             InitializeAds();
         }
     }
+
+
     public void InitializeAds()
     {
         _gameId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSGameId : _androidGameId;

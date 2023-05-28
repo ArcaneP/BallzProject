@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
 
 
     private void Awake()
-    {
+    {   
+
         if (PlayerPrefs.GetInt("hp") > maxHealth)
         {
             curHealth = maxHealth;
@@ -100,18 +101,25 @@ public class GameManager : MonoBehaviour
 
     void ShowADButton()
     {
-        if(curHealth < maxHealth)
+        if(showADbutton != null) 
         {
-            showADbutton.SetActive(true);
+            Debug.Log("ShowADButton reference is not found :c");
+            if(curHealth < maxHealth)
+            {
+                showADbutton.SetActive(true);
+            }
+            else
+            {
+                showADbutton.SetActive(false);
+            }
         }
-        else
-        {
-            showADbutton.SetActive(false);
-        }
+
     }
 
     private void Update()
     {
+
+
         for(int i = 0; i < hearts.Length; i++)
         {
             if(i < curHealth)
