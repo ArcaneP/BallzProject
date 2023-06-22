@@ -77,7 +77,7 @@ public class FinishLine : MonoBehaviour
 
             if(timer <= 0)
             {
-                anim.SetBool("isOpen", true);
+                anim.SetBool("isOpen", false);
 
                 if (counter >= endGoal - range && counter <= endGoal + range)
                 {

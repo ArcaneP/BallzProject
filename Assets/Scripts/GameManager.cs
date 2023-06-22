@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         winscreen.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
     }
 }
