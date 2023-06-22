@@ -18,7 +18,7 @@ public class FinishLine : MonoBehaviour
     private int range = 2;
 
     private bool startcount;
-    public float timer = 10;
+    private float timer = 8;
 
     private float startTimer;
 
