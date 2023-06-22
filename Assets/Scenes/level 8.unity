@@ -238,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 4133682565003137593, guid: de721efb030090246a4b8290b89194cb, type: 3}
   spawnPos: {fileID: 1531563899}
-  maxBalls: 120
+  maxBalls: 130
   randomMin: 0
   randomMax: 0.5
 --- !u!4 &692131035
@@ -756,7 +756,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  showADbutton: {fileID: 0}
   curSceneName: 
   number: 0
 --- !u!4 &1940754451

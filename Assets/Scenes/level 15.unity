@@ -148,8 +148,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514395448}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0708, y: -2.11, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: -1, w: -0.0000013858079}
+  m_LocalPosition: {x: 0.070806384, y: 2.1099997, z: 0}
   m_LocalScale: {x: 2.0662253, y: -0.084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -751,7 +751,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: fa1da14b4a237c240801402339ccc98c, type: 3}
-  m_Color: {r: 0.74509805, g: 0.27058828, b: 0.27701598, a: 1}
+  m_Color: {r: 0.77254903, g: 0.7723789, b: 0.35686278, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -768,8 +768,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539066715}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: -0.0000013858079}
+  m_LocalPosition: {x: -0.029999463, y: 0.019999959, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -777,7 +777,7 @@ Transform:
   - {fileID: 514395449}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!1001 &1602380582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -860,8 +860,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724944325}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01044002, y: -1.18, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: -1, w: -0.0000013858079}
+  m_LocalPosition: {x: -0.010436213, y: 1.18, z: 0}
   m_LocalScale: {x: 2.79, y: -0.084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -950,7 +950,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  showADbutton: {fileID: 0}
   curSceneName: 
   number: 0
 --- !u!4 &1940754451
