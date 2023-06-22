@@ -968,7 +968,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: fa1da14b4a237c240801402339ccc98c, type: 3}
-  m_Color: {r: 0.74509805, g: 0.30095348, b: 0.27058828, a: 1}
+  m_Color: {r: 0.08627451, g: 0.6666667, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1127,7 +1127,6 @@ MonoBehaviour:
   - {fileID: 513575524}
   - {fileID: 1888133990}
   - {fileID: 1217274919}
-  showADbutton: {fileID: 0}
   curSceneName: 
   number: 0
 --- !u!4 &1940754451
