@@ -15,7 +15,7 @@ public class FinishLine : MonoBehaviour
     public Image image;
     public int counter;
     public int endGoal;
-    private int range = 4;
+    private int range = 2;
 
     private bool startcount;
     public float timer = 10;
