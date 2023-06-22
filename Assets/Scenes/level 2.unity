@@ -664,6 +664,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: heartContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 3219699848953883665, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219699849384999453, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3219699849402535030, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -983,7 +991,6 @@ MonoBehaviour:
   image: {fileID: 0}
   counter: 0
   endGoal: 70
-  timer: 10
 --- !u!1001 &1804936024
 PrefabInstance:
   m_ObjectHideFlags: 0
