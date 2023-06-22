@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4133682565003137598}
   - component: {fileID: -1441852791553616954}
   - component: {fileID: -5900833105571504489}
+  - component: {fileID: 8527379159105193498}
   m_Layer: 0
   m_Name: menu circle
   m_TagString: golyo
@@ -236,3 +237,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleTime: 2
   pushForce: 40
+--- !u!95 &8527379159105193498
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133682565003137593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28b26d0e81570594892af814ea2193f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

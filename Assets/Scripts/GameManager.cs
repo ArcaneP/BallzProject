@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private Image heart2;
     private Image heart3;
 
-    [SerializeField] private GameObject showADbutton; //only show when health is bellow max
+    
 
     public static GameManager Instance { get; private set; }
 
@@ -56,10 +56,6 @@ public class GameManager : MonoBehaviour
             curHealth = PlayerPrefs.GetInt("hp");
         }
 
-        if(SceneManager.GetActiveScene().name == "menu")
-        {
-            ShowADButton();
-        }
     }
 
 
@@ -99,22 +95,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void ShowADButton()
-    {
-        if(showADbutton != null) 
-        {
-            Debug.Log("ShowADButton reference is not found :c");
-            if(curHealth < maxHealth)
-            {
-                showADbutton.SetActive(true);
-            }
-            else
-            {
-                showADbutton.SetActive(false);
-            }
-        }
-
-    }
 
     private void Update()
     {
@@ -182,15 +162,6 @@ public class GameManager : MonoBehaviour
         else
         {
             curHealth += health;
-        }
-
-        if (curHealth < maxHealth)
-        {
-            showADbutton.SetActive(true);
-        }
-        else
-        {
-            showADbutton.SetActive(false);
         }
     }
 

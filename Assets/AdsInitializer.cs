@@ -12,15 +12,49 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     public static AdsInitializer Instance;
 
+    [SerializeField] private GameObject showADbutton; //only show when health is bellow max
+
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
             GameManager.Instance.TakeDamage(1);
         }
+
+
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
+            ShowADButton();
+
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            showADbutton.SetActive(false);
+        }
+
+
     }
 
-    private void Awake()
+    void ShowADButton()
+    {
+        if (showADbutton != null)
+        {
+            Debug.Log("ShowADButton reference is not found :c");
+            if (GameManager.Instance.curHealth < GameManager.Instance.maxHealth)
+            {
+                showADbutton.SetActive(true);
+            }
+            else
+            {
+                showADbutton.SetActive(false);
+            }
+        }
+    }
+
+
+        private void Awake()
     {
 
         // Check if an instance already exists
