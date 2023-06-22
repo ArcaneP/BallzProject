@@ -67,7 +67,7 @@ public class FinishLine : MonoBehaviour
 
         if (startcount)
         {
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
 
 
             if(timer > 0)
