@@ -1044,6 +1044,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: levels
       objectReference: {fileID: 0}
+    - target: {fileID: 3219699848481677976, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1940754450}
+    - target: {fileID: 3219699848481677976, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryAgainButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3219699848631706992, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
