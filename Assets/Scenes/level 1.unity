@@ -1015,7 +1015,6 @@ MonoBehaviour:
   - {fileID: 513575524}
   - {fileID: 1888133990}
   - {fileID: 1217274919}
-  showADbutton: {fileID: 0}
   curSceneName: 
   number: 0
 --- !u!4 &1940754451
