@@ -15,8 +15,12 @@ public class GameFinishedButton : MonoBehaviour
 
     private void Start()
     {
+        if(SceneManager.GetActiveScene().name != "demo")
+        {
         curSceneName = SceneManager.GetActiveScene().name;
         number = int.Parse(Regex.Match(curSceneName, @"\d+").Value);
+
+        }
     }
 
 

@@ -18,7 +18,7 @@ public class FinishLine : MonoBehaviour
     private int range = 2;
 
     private bool startcount;
-    private float timer = 8;
+    [SerializeField] float timer = 8;
 
     private float startTimer;
 
@@ -46,6 +46,8 @@ public class FinishLine : MonoBehaviour
         {
             //collision.GetComponent<PushOnIdle>().enabled = false;
             collision.gameObject.name = "x";
+
+
             counter++;
 
             curFillAmountText.SetText(counter.ToString() + "/" + endGoal);

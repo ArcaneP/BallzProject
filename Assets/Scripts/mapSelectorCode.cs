@@ -85,7 +85,7 @@ public class mapSelectorCode : MonoBehaviour
                 levelPointer--;
                 UIText.SetText("LEVEL: " + (levelPointer + 1) );
             }
-            Debug.Log(levelPointer);
+            //Debug.Log(levelPointer);
             iconOBJ.GetComponent<Image>().sprite = levelList.levels[levelPointer];
         }
 

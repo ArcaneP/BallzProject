@@ -859,7 +859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &809141384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1246,8 +1246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 21300000, guid: 2efdc01f993e1c84f9106dd1c8a24ae6, type: 3}
   - {fileID: 21300000, guid: 83f51895793fbd045972f1e0c250638c, type: 3}
+  - {fileID: 21300000, guid: 2efdc01f993e1c84f9106dd1c8a24ae6, type: 3}
   - {fileID: 21300000, guid: 57a4815a771a5eb4b96f5cfd5029a721, type: 3}
   - {fileID: 21300000, guid: 34996d1b7c5bc794492996d2c9cd2530, type: 3}
   - {fileID: 21300000, guid: bace8717511fccc4c888e5940877e1be, type: 3}
@@ -2097,7 +2097,6 @@ MonoBehaviour:
   - {fileID: 882361177}
   - {fileID: 858349780}
   - {fileID: 202629322}
-  showADbutton: {fileID: 0}
   curSceneName: 
   number: 0
 --- !u!4 &1675160223

@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         SelectHeartImages();
 
-        Application.targetFrameRate = 100;
+        
         if(PlayerPrefs.GetInt("hp") > 0)
         {
             curHealth = PlayerPrefs.GetInt("hp");
@@ -117,8 +117,19 @@ public class GameManager : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("lastSceneName") != 0)
         {
+            // uncomment to fix if bugs
             Debug.Log("level " + PlayerPrefs.GetInt("lastSceneName"));
-            SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));           
+            SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));
+
+
+            //TRY TO MAKE IT LOAD USING COOL LOAD BAR
+
+            /*SceneManager.LoadScene("LoadingScene");
+            LoadingBarScript.Instance.destSceneName = "level " + PlayerPrefs.GetInt("lastSceneName");
+            Debug.Log("loading now: " + LoadingBarScript.Instance.destSceneName);*/
+
+
+
         }
         else
         {

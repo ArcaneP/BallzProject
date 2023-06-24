@@ -281,14 +281,14 @@ PrefabInstance:
     - target: {fileID: 3219699849462747031, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1724944325}
+      objectReference: {fileID: 1724944328}
     - target: {fileID: 3219699849462747031, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3219699849462747031, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: 
+      value: StartCounting
       objectReference: {fileID: 0}
     - target: {fileID: 3219699849462747031, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -1157,11 +1157,10 @@ PolygonCollider2D:
       - {x: -1.24, y: 1.9699999}
       - {x: -1.28, y: 1.9799999}
       - {x: -1.4599999, y: 1.9799999}
-      - {x: -2.637095, y: -2.2902608}
-      - {x: -2.0713317, y: -3.6142907}
-      - {x: 1.8969073, y: -3.3858616}
-      - {x: 2.3976345, y: -2.9439154}
-      - {x: 2.6392667, y: -2.428421}
+      - {x: -1.7497915, y: -2.3188837}
+      - {x: -1.5561231, y: -2.7985437}
+      - {x: 1.5820575, y: -2.8420303}
+      - {x: 1.8394922, y: -2.0566115}
       - {x: 1.4493667, y: 1.9799999}
 --- !u!58 &2037116054
 CircleCollider2D:
