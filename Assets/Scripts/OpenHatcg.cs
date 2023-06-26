@@ -5,7 +5,7 @@ using UnityEngine;
 public class OpenHatcg : MonoBehaviour
 {
     public GameObject hatch;
-    int asd = 0;
+    int asd = 1;
     private Animator anim;
 
     private void Start()
