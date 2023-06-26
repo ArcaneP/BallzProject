@@ -24,10 +24,24 @@ public class FinishLine : MonoBehaviour
 
     private Animator anim;
 
+    public static FinishLine Instance;
+
     private void Awake()
     {      
         curFillAmountText = GameObject.FindGameObjectWithTag("fillText").GetComponent<TextMeshProUGUI>();
         image = GameObject.FindGameObjectWithTag("fillicon").GetComponent<Image>();
+
+
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     private void Start()

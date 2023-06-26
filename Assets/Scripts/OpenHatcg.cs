@@ -13,6 +13,22 @@ public class OpenHatcg : MonoBehaviour
         anim = GameObject.FindObjectOfType<Animator>();
     }
 
+#if UNITY_EDITOR
+
+    //pc space testing 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space pressed");
+            FinishLine.Instance.StartCounting();
+            Open();
+        }
+    }
+
+#endif
+
     public void Open()
     {
 
