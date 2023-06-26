@@ -27,7 +27,9 @@ public class FinishLine : MonoBehaviour
     public static FinishLine Instance;
 
     private void Awake()
-    {      
+    {
+        timer = 6;
+
         curFillAmountText = GameObject.FindGameObjectWithTag("fillText").GetComponent<TextMeshProUGUI>();
         image = GameObject.FindGameObjectWithTag("fillicon").GetComponent<Image>();
 
