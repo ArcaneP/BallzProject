@@ -18,7 +18,7 @@ public class FinishLine : MonoBehaviour
     private int range = 2;
 
     private bool startcount;
-    [SerializeField] float timer = 8;
+    [SerializeField] float timer = 6;
 
     private float startTimer;
 
@@ -75,7 +75,7 @@ public class FinishLine : MonoBehaviour
         yield return new WaitForSeconds(3f);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Debug.Log(image.fillAmount);
         image.fillAmount = -(-timer / startTimer);
