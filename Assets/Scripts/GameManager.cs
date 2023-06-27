@@ -25,7 +25,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string curSceneName;
     [SerializeField] private int number;
-
+    
+    void Start()
+    {
+        
+        Application.targetFrameRate = -1;
+    }
 
     private void Awake()
     {   
