@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -193,6 +194,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        ClearBalls();
         losescreen.SetActive(true);
         //Time.timeScale = 0;
         //set back tp to max
@@ -201,8 +203,30 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        ClearBalls();
+
         winscreen.SetActive(true);
+        losescreen.SetActive(false);
         //Time.timeScale = 0;
 
+    }
+
+    private void ClearBalls()
+    {
+        // Find all game objects with the name "Circle(Clone)"
+        GameObject[] balls = GameObject.FindObjectsOfType<GameObject>().Where(go => go.name == "Circle(Clone)").ToArray();
+
+        Debug.Log("balls count: " + balls.Length);
+
+        // Destroy all found game objects
+        foreach (GameObject ball in balls)
+        {
+            Destroy(ball);
+        }
+    }
+
+    public void ClearGarbage()
+    {
+        System.GC.Collect();
     }
 }
