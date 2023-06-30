@@ -47,6 +47,7 @@ public class TutorialManagerScript : MonoBehaviour
 
     public void StartTutorial()
     {
+        PlayerPrefs.SetInt("lastSceneName",1);
         GameManager.Instance.curHealth = 2;
 
         // Show initial instructions/UI elements

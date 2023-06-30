@@ -19,7 +19,7 @@ public class mapSelectorCode : MonoBehaviour
     private void Start()
     {
 
-        if(PlayerPrefs.GetInt("lastSceneName") == 0)
+        if(PlayerPrefs.GetInt("lastSceneName") == 1)
         {
             levelPointer = 0;
         }
@@ -34,7 +34,7 @@ public class mapSelectorCode : MonoBehaviour
 
         Debug.Log("levellist is: " + levelList.levels.Length);
 
-        if(levelPointer <= 1)
+        if(levelPointer < 1)
         {
             buttonLeft.gameObject.SetActive(false);
         }else

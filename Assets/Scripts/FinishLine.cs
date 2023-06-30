@@ -26,6 +26,8 @@ public class FinishLine : MonoBehaviour
 
     public static FinishLine Instance;
 
+    
+
     private void Awake()
     {
         timer = 6;
@@ -79,13 +81,13 @@ public class FinishLine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(image.fillAmount);
+        
         image.fillAmount = -(-timer / startTimer);
 
 
         if (startcount)
         {
-            //Time.timeScale = 1;
+           
 
 
             if(timer > 0)
@@ -99,6 +101,7 @@ public class FinishLine : MonoBehaviour
 
                 if (counter >= endGoal - range && counter <= endGoal + range)
                 {
+                  
                     gameMan.Win();
                 }
                 else
@@ -108,6 +111,7 @@ public class FinishLine : MonoBehaviour
             }
         }
     }
+
 
     public void StartCounting()
     {
