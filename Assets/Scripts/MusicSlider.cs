@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 public class MusicSlider : MonoBehaviour
@@ -10,9 +11,15 @@ public class MusicSlider : MonoBehaviour
 
     [SerializeField] Slider soundSlider;
 
+    [SerializeField] string VolumeName = "MasterVolume";
+
+    private string savedVolume;
+
     private void Start()
     {
-        SetVolume(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
+        savedVolume = "Saved" + VolumeName;
+
+        SetVolume(PlayerPrefs.GetFloat(savedVolume));
     }
 
     public void SetVolume(float _value)
@@ -24,8 +31,8 @@ public class MusicSlider : MonoBehaviour
 
         RefreshSlider(_value);
 
-        PlayerPrefs.SetFloat("SavedMasterVolume", _value);
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(_value / 100) * 20f);
+        PlayerPrefs.SetFloat(savedVolume, _value);
+        masterMixer.SetFloat(VolumeName, Mathf.Log10(_value / 100) * 20f);
     }
 
     
@@ -37,7 +44,10 @@ public class MusicSlider : MonoBehaviour
 
     public void RefreshSlider(float _value)
     {
-        soundSlider.value = _value;
+        if(soundSlider != null)
+        {
+            soundSlider.value = _value;
+        }
 
     }
 }

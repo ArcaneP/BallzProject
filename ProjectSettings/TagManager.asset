@@ -13,6 +13,7 @@ TagManager:
   - h2
   - h3
   - ADbttn
+  - soundManager
   layers:
   - Default
   - TransparentFX

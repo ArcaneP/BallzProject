@@ -41,7 +41,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     {
         if (showADbutton != null)
         {
-            Debug.Log("ShowADButton reference is not found :c");
+            //Debug.Log("ShowADButton reference is not found :c");
             if (GameManager.Instance.curHealth < GameManager.Instance.maxHealth)
             {
                 showADbutton.SetActive(true);
@@ -145,21 +145,37 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         {
             RewardPlayer();
         }
+
+        if (placementId.Equals("Rewarded_Android") && UnityAdsShowCompletionState.UNKNOWN.Equals(showCompletionState))
+        {
+            showADbutton.SetActive(false);
+        }
+
+
         Time.timeScale = 1;
         Advertisement.Banner.Show("Banner_Android");
     }
 
     public void RewardPlayer()
     {
+        Time.timeScale = 1;
         Debug.Log("rewarded Player");
 
         GameManager.Instance.HealPlayer(1);
         PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
 
+        if(GameManager.Instance.curHealth == 3)
+        {
+            TimerScript.Instance.timerText.enabled = false;
+        }
+
+
     }
 
     public void LoadBannerAd()
     {
+        Debug.Log("banner loaded succesfully");
+
         Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
         Advertisement.Banner.Load("Banner_Android",
             new BannerLoadOptions

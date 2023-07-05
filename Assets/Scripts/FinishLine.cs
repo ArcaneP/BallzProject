@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class FinishLine : MonoBehaviour
 {
     public GameObject hatch;
-
-    private GameManager gameMan;
 
     public TextMeshProUGUI curFillAmountText;
 
@@ -25,6 +24,8 @@ public class FinishLine : MonoBehaviour
     private Animator anim;
 
     public static FinishLine Instance;
+
+    public bool isDone = false;
 
     
 
@@ -53,7 +54,6 @@ public class FinishLine : MonoBehaviour
         hatch = GameObject.FindGameObjectWithTag("Holder");
         anim = hatch.GetComponent<Animator>();
         curFillAmountText.SetText(counter.ToString() + "/" + endGoal);
-        gameMan = GameObject.FindObjectOfType<GameManager>();
         startTimer = timer;
 
     }
@@ -101,12 +101,21 @@ public class FinishLine : MonoBehaviour
 
                 if (counter >= endGoal - range && counter <= endGoal + range)
                 {
-                  
-                    gameMan.Win();
+                    if (!isDone)
+                    {
+                        GameManager.Instance.Win();
+                        isDone = true;
+                    }
                 }
                 else
                 {
-                    gameMan.TakeDamage(1);
+                    //BUG
+                    if(GameManager.Instance.curHealth <= 0)
+                    {
+                        isDone = true;
+                    }
+                    GameManager.Instance.TakeDamage(1);
+
                 }
             }
         }

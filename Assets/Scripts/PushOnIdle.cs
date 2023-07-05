@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PushOnIdle : MonoBehaviour
 {
-    public float idleTime = 5f;
+    /*public float idleTime = 5f;
     public float pushForce = 1f;
 
     private Rigidbody2D rb;
@@ -51,5 +51,5 @@ public class PushOnIdle : MonoBehaviour
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         rb.AddForce(randomDirection * pushForce, ForceMode2D.Impulse);
         rb.gravityScale = -rb.gravityScale;
-    }
+    }*/
 }

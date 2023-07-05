@@ -121,27 +121,31 @@ public class GameManager : MonoBehaviour
 
     public void LoadLastLevel()
     {
-        if(PlayerPrefs.GetInt("lastSceneName") != 0)
+        if(curHealth > 0)
         {
-            // uncomment to fix if bugs
-            Debug.Log("level " + PlayerPrefs.GetInt("lastSceneName"));
-            SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));
+
+            if(PlayerPrefs.GetInt("lastSceneName") != 0)
+            {
+                // uncomment to fix if bugs
+                Debug.Log("level " + PlayerPrefs.GetInt("lastSceneName"));
+                SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));
 
 
-            //TRY TO MAKE IT LOAD USING COOL LOAD BAR
+                //TRY TO MAKE IT LOAD USING COOL LOAD BAR
 
-            /*SceneManager.LoadScene("LoadingScene");
-            LoadingBarScript.Instance.destSceneName = "level " + PlayerPrefs.GetInt("lastSceneName");
-            Debug.Log("loading now: " + LoadingBarScript.Instance.destSceneName);*/
+                /*SceneManager.LoadScene("LoadingScene");
+                LoadingBarScript.Instance.destSceneName = "level " + PlayerPrefs.GetInt("lastSceneName");
+                Debug.Log("loading now: " + LoadingBarScript.Instance.destSceneName);*/
 
 
 
+            }
+            else
+            {
+                SceneManager.LoadScene("level 1");
+                PlayerPrefs.SetInt("lastSceneName", 1);
+            } 
         }
-        else
-        {
-            SceneManager.LoadScene("level 1");
-            PlayerPrefs.SetInt("lastSceneName", 1);
-        } 
     } 
 
     public void TakeDamage(int damage)
@@ -179,14 +183,14 @@ public class GameManager : MonoBehaviour
         else
         {
             curHealth += health;
+            TimerScript.Instance.RefreshTimer();
         }
     }
 
     public void TryAgainButton()
     {
-        AdsInitializer.Instance.LoadInerstitialAd();
+        AdsInitializer.Instance.LoadRewardedAd();
 
-        PlayerPrefs.SetInt("hp", 1);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
 
@@ -194,21 +198,22 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        ClearBalls();
-        losescreen.SetActive(true);
-        //Time.timeScale = 0;
-        //set back tp to max
-        //PlayerPrefs.SetInt("hp", 0);
+        if(!FinishLine.Instance.isDone) 
+        { 
+            Debug.Log("Say Hola once");
+            SoundManager.Instance.PlayDefeatSFX();
+            ClearBalls();
+            losescreen.SetActive(true);
+        }
     }
 
     public void Win()
     {
+        Debug.Log("Say Hi once");
+        SoundManager.Instance.PlayerWinSFX();
         ClearBalls();
-
         winscreen.SetActive(true);
         losescreen.SetActive(false);
-        //Time.timeScale = 0;
-
     }
 
     private void ClearBalls()
@@ -228,5 +233,13 @@ public class GameManager : MonoBehaviour
     public void ClearGarbage()
     {
         System.GC.Collect();
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        if(curHealth > 0)
+        {
+            SceneManager.LoadScene(sceneName);   
+        }
     }
 }
