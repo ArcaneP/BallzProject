@@ -6,7 +6,7 @@ public class TimerScript : MonoBehaviour
 {
    [SerializeField] private int DefaultTimerDuration = 90;
    [SerializeField] private int timerDuration ; // Duration of each timer cycle in seconds
-   [SerializeField] private int timer; // Current timer value
+   [SerializeField] private float timer; // Current timer value
 
     [SerializeField]
     private string timeString; // Timer value as a string
@@ -14,6 +14,8 @@ public class TimerScript : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI timerText2;
     public static TimerScript Instance { get; private set; }
+
+    public bool enabledTimer = true;
 
     private void Awake()
     {
@@ -43,6 +45,7 @@ public class TimerScript : MonoBehaviour
 
         timer = timerDuration;
 
+
         RefreshTimer();
 
     }
@@ -51,7 +54,7 @@ public class TimerScript : MonoBehaviour
     {
         //Debug.Log("saving healthtimer for later");
         // Store the current time when the app is paused
-        PlayerPrefs.SetInt("LastHPTimer", timer);
+        PlayerPrefs.SetInt("LastHPTimer", (int)timer);
         PlayerPrefs.Save();
     }
 
@@ -64,62 +67,84 @@ public class TimerScript : MonoBehaviour
         {
             if (timerText != null)
             {
-                timerText.enabled = false;
+                //timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = false;
             }
             //reset timer to max so it isnt helping players in the background
             timer = DefaultTimerDuration;
-            PlayerPrefs.SetInt("LastHPTimer", timer);
+            PlayerPrefs.SetInt("LastHPTimer",(int)timer);
         }
         else
         {
             if(timerText != null)
             {
-                timerText.enabled = true;
-                InvokeRepeating("UpdateTimer", 0f, 1f);
+                timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = true;
+                //InvokeRepeating("UpdateTimer", 0f, 1f);
             }
         }
     }
 
-    private void UpdateTimer()
+    private void FixedUpdate()
     {
-        if (timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled == true)
+        if (enabledTimer)
         {
+                PlayerPrefs.SetInt("LastHPTimer", (int)timer);
 
-            timer--;
-
-            if (timer <= 0)
-            {
-                Debug.Log("Hello jello");
-
-
-               timer = DefaultTimerDuration;
-
-
-                if(PlayerPrefs.GetInt("hp") < 3)
+                if (timer <= 0)
                 {
-                    timerText.enabled = true;
-                    GameManager.Instance.HealPlayer(1);
-                    PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+                    Debug.Log("Hello jello");
+
+
+                    timer = DefaultTimerDuration;
+
+                    //Timer hit zero heal player 1
+
+                    if (PlayerPrefs.GetInt("hp") < 3)
+                    {
+                        timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = true;
+                        enabledTimer = true;
+                        GameManager.Instance.HealPlayer(1);
+                        PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+                        PlayerPrefs.Save();
+
+                        if(PlayerPrefs.GetInt("hp") == 3)
+                        {
+                            enabledTimer = false;
+                            timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = false;
+                        }
+
+                    }
+                    else
+                    {
+                        enabledTimer = false;
+                        timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = false;
+                    }
                 }
                 else
                 {
-                    timerText.enabled = false;
+
+                    timer-= 1 * Time.fixedDeltaTime;
+                    //timer -= 0.5f * Time.fixedDeltaTime;
+                    //timer -= 60 * Time.fixedDeltaTime;
+
+                    int minutes = Mathf.FloorToInt(timer / 60);
+                    int seconds = Mathf.FloorToInt(timer % 60);
+                    timeString = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                    timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                    timerText2.text = "(You get 1 life every " + minutes.ToString("D2") + "m" + seconds.ToString("D2") + "s" + ")";
+                    //Debug.Log("Timer: " + timeString);
                 }
-            }
-
-
+           }
         }
 
-
-        int minutes = Mathf.FloorToInt(timer / 60);
-        int seconds = Mathf.FloorToInt(timer % 60);
-        timeString = minutes.ToString("D2") + ":" + seconds.ToString("D2");
-        
-        timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
-
-        timerText2.text = "(You get 1 life every " + minutes.ToString("D2") + "m" + seconds.ToString("D2") + "s" + ")";
-
-
-        //Debug.Log("Timer: " + timeString);
+    public void ResetTimer()
+    {
+        timer = DefaultTimerDuration;
+        PlayerPrefs.SetInt("LastHPTimer", (int)timer);
     }
+
+    /*public void UpdateTimer()
+    {
+
+    }*/
+
 }

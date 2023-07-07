@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour
     private Image heart2;
     private Image heart3;
 
-    
+    [SerializeField] Button ExitToLevelsBttn;
 
     public static GameManager Instance { get; private set; }
 
@@ -28,13 +30,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int number;
     
     void Start()
-    {
-        
+    {      
         Application.targetFrameRate = 90;
     }
 
     private void Awake()
-    {   
+    {
 
         if (PlayerPrefs.GetInt("hp") > maxHealth)
         {
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("hp", curHealth);
         }
 
+        
+        if(PlayerPrefs.GetInt("hp") > 0)
+        {
+            curHealth = PlayerPrefs.GetInt("hp");
+        }
 
         // If there is an instance, and it's not me, delete myself.
 
@@ -56,11 +62,23 @@ public class GameManager : MonoBehaviour
 
         SelectHeartImages();
 
-        
-        if(PlayerPrefs.GetInt("hp") > 0)
+        if(curHealth < 3)
         {
-            curHealth = PlayerPrefs.GetInt("hp");
+            //TimerScript.Instance.timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = true;
+            TimerScript.Instance.enabledTimer = true;
         }
+        else
+        {
+            TimerScript.Instance.timerText.gameObject.GetComponent<TextMeshProUGUI>().enabled = false;
+        }
+
+
+        if (ExitToLevelsBttn != null)
+        {
+            ExitToLevelsBttn.onClick.AddListener(TakeDmg);
+            ExitToLevelsBttn.onClick.AddListener(LoadLevelMenu);
+        }
+
 
     }
 
@@ -104,8 +122,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
-
         for(int i = 0; i < hearts.Length; i++)
         {
             if(i < curHealth)
@@ -116,7 +132,8 @@ public class GameManager : MonoBehaviour
             {
                 hearts[i].enabled = false;
             }
-        } 
+
+        }
     }
 
     public void LoadLastLevel()
@@ -144,9 +161,23 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene("level 1");
                 PlayerPrefs.SetInt("lastSceneName", 1);
-            } 
+            }
         }
+        else{   AdsInitializer.Instance.ShowNoHealthUI();  }
     } 
+
+    private void TakeDmg()
+    {
+        curHealth -= 1;
+        PlayerPrefs.SetInt("hp", curHealth);
+
+        if(curHealth < 3)
+        {
+            TimerScript.Instance.ResetTimer();
+            TimerScript.Instance.enabledTimer = true;
+            TimerScript.Instance.timerText.enabled = true;
+        }
+    }
 
     public void TakeDamage(int damage)
     {       
@@ -154,6 +185,7 @@ public class GameManager : MonoBehaviour
         if(curHealth > 0)
         {
 
+            SoundManager.Instance.PlayLoseHPSFX();
             curHealth -= damage;
             PlayerPrefs.SetInt("hp", curHealth);
 
@@ -163,6 +195,10 @@ public class GameManager : MonoBehaviour
             {
                 Scene scene = SceneManager.GetActiveScene(); 
                 SceneManager.LoadScene(scene.name);
+
+                TimerScript.Instance.ResetTimer();
+                TimerScript.Instance.enabledTimer = true;
+                TimerScript.Instance.timerText.enabled = true;
             }
         }
 
@@ -179,10 +215,12 @@ public class GameManager : MonoBehaviour
         if(curHealth > maxHealth)
         {
             curHealth = maxHealth;
+            PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
         }
         else
         {
             curHealth += health;
+            PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
             TimerScript.Instance.RefreshTimer();
         }
     }
@@ -239,7 +277,18 @@ public class GameManager : MonoBehaviour
     {
         if(curHealth > 0)
         {
-            SceneManager.LoadScene(sceneName);   
+            SceneManager.LoadScene(sceneName);
         }
+        else { AdsInitializer.Instance.ShowNoHealthUI(); }
+    }
+
+    private void LoadLevelMenu() 
+    {
+        SceneManager.LoadScene("levels");
+    }
+
+    public void SimpleLoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

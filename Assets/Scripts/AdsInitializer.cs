@@ -12,7 +12,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     public static AdsInitializer Instance;
 
-    [SerializeField] private GameObject showADbutton; //only show when health is bellow max
+    [SerializeField] private GameObject showADbutton, getHealthUI; //only show when health is bellow max
 
 
     private void Update()
@@ -34,7 +34,11 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
             showADbutton.SetActive(false);
         }
 
+    }
 
+    public void ShowNoHealthUI() 
+    {
+        getHealthUI.SetActive(true);
     }
 
     void ShowADButton()

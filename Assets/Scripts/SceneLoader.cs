@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadScene(string Levelname)
     {
-        SceneManager.LoadScene(Levelname);
+        Debug.LogError("CHANGED CODE TO GAMEMANAGER");
+        //SceneManager.LoadScene(Levelname);
     }
 }

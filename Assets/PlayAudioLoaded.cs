@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayAudioLoaded : MonoBehaviour
 {
@@ -8,9 +10,17 @@ public class PlayAudioLoaded : MonoBehaviour
 
     [SerializeField] AudioClip[] _clip;
 
+    Button button;
+
     private void Awake()
     {
         _as = GameObject.FindObjectOfType<SoundManager>().GetComponent<AudioSource>();
+
+        if(this.gameObject.GetComponent<Button>() != null)
+        {
+            this.gameObject.GetComponent<Button>().onClick.AddListener(PlayerAudioWLoad);
+        }
+
     }
 
     public void PlayerAudioWLoad()

@@ -5,29 +5,19 @@ using UnityEngine;
 public class OpenHatcg : MonoBehaviour
 {
     public GameObject hatch;
-    int asd = 1;
+    [SerializeField] int asd = 1;
     private Animator anim;
 
     private void Start()
     {
-        anim = GameObject.FindObjectOfType<Animator>();
+        
+        //hatch = GameObject.FindGameObjectWithTag("Holder");
+        //anim = GameObject.FindObjectOfType<Animator>();
+        
+
+        hatch = GameObject.FindGameObjectWithTag("Holder");
+        anim = hatch.gameObject.GetComponent<Animator>();
     }
-
-#if UNITY_EDITOR
-
-    //pc space testing 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Space pressed");
-            FinishLine.Instance.StartCounting();
-            Open();
-        }
-    }
-
-#endif
 
     public void Open()
     {

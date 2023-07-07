@@ -29,7 +29,7 @@ public class MusicSlider : MonoBehaviour
             _value = .001f;
         }
 
-        RefreshSlider(_value);
+        RefreshSlider(_value); //fsddddddd
 
         PlayerPrefs.SetFloat(savedVolume, _value);
         masterMixer.SetFloat(VolumeName, Mathf.Log10(_value / 100) * 20f);
@@ -46,7 +46,7 @@ public class MusicSlider : MonoBehaviour
     {
         if(soundSlider != null)
         {
-            soundSlider.value = _value;
+            soundSlider.value = _value; //fsddddddd
         }
 
     }

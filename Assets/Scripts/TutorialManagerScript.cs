@@ -48,13 +48,16 @@ public class TutorialManagerScript : MonoBehaviour
     public void StartTutorial()
     {
         PlayerPrefs.SetInt("lastSceneName",1);
-        GameManager.Instance.curHealth = 2;
+        PlayerPrefs.SetInt("hp", 1);
+        GameManager.Instance.curHealth = 1; 
+        GameManager.Instance.HealPlayer(3);
+        TimerScript.Instance.enabledTimer = false;
 
         // Show initial instructions/UI elements
         // Activate necessary game objects
         // Set up any initial conditions
 
-        if(PlayButton != null)
+        if (PlayButton != null)
         {
             PlayButton.SetActive(false);
         }
@@ -171,7 +174,8 @@ public class TutorialManagerScript : MonoBehaviour
     public void CompletedTutorial()
     {
         hasCompletedTutorial = true;
-        PlayerPrefs.SetFloat("hasCompletedTutorial", 1);  
+        PlayerPrefs.SetFloat("hasCompletedTutorial", 1);
+        TimerScript.Instance.enabledTimer = false;
     }
 
     public void ReDoTutorial() 

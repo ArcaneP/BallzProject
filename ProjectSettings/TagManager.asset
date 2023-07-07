@@ -14,6 +14,7 @@ TagManager:
   - h3
   - ADbttn
   - soundManager
+  - outofLives
   layers:
   - Default
   - TransparentFX
