@@ -1296,6 +1296,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: menu
       objectReference: {fileID: 0}
+    - target: {fileID: 948245525078727824, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 948245525078727824, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1940754450}
+    - target: {fileID: 948245525078727824, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SimpleLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 948245525078727824, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "menu\xEDs"
+      objectReference: {fileID: 0}
     - target: {fileID: 3219699848228556897, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
