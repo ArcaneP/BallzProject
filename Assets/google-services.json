@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16565131907",
+    "project_id": "shapefill-221c7",
+    "storage_bucket": "shapefill-221c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16565131907:android:40caadaf000f2fabf2d9b6",
+        "android_client_info": {
+          "package_name": "com.SkillerGameDev.ShapeFill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16565131907-q40sudrgm5t236aou85rofsaakn4fg44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD86dkp2JysbhY-3K0RCjo_YOfTE3p24wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16565131907-q40sudrgm5t236aou85rofsaakn4fg44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

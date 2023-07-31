@@ -134,6 +134,12 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+        if(curHealth == 0)
+        {
+            losescreen.SetActive(true);
+            //GameOver();
+        }
     }
 
     public void LoadLastLevel()

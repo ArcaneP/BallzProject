@@ -165,8 +165,15 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         Time.timeScale = 1;
         Debug.Log("rewarded Player");
 
-        GameManager.Instance.HealPlayer(1);
-        PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+        if(GameManager.Instance.curHealth < 3 && PlayerPrefs.GetInt("hp") < 3)
+        {
+            GameManager.Instance.HealPlayer(3);
+            PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+        }
+        else
+        {
+            Debug.Log("max health reached");
+        }
 
         if(GameManager.Instance.curHealth == 3)
         {
