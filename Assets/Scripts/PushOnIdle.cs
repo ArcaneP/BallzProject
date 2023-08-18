@@ -11,7 +11,7 @@ public class PushOnIdle : MonoBehaviour
 
     private void Start()
     {
-        pushForce = Random.RandomRange(50f, 100f);
+        pushForce = Random.Range(50f, 100f);
 
         rb = GetComponent<Rigidbody2D>();
         idleTimer = 0f;

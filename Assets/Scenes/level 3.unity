@@ -154,7 +154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539066717}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &514395450
 BoxCollider2D:
@@ -616,6 +616,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &769222128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9015663088949541352, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+  m_PrefabInstance: {fileID: 769222126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007222957
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +777,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210483890
 GameObject:
@@ -850,7 +861,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214560070 stripped
 GameObject:
@@ -866,7 +877,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1701223387390091530, guid: 1af6d326bdf029c4d85a567cdecfebe4, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1701223387390091530, guid: 1af6d326bdf029c4d85a567cdecfebe4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1026,10 +1037,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1724944326}
   - {fileID: 514395449}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724944325
 GameObject:
@@ -1057,12 +1067,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724944325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -1.63, z: 0}
+  m_LocalPosition: {x: 0.049999997, y: -1.61, z: 0}
   m_LocalScale: {x: 3.33, y: -0.084, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539066717}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1724944327
 BoxCollider2D:
@@ -1107,7 +1117,8 @@ MonoBehaviour:
   image: {fileID: 0}
   counter: 0
   endGoal: 30
-  timer: 10
+  range: 4
+  timer: 6
   isDone: 0
 --- !u!1001 &1779649504
 PrefabInstance:
@@ -1118,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4817219612884203609, guid: 5c1ac4a4720da5545910184a3410ad6f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4817219612884203609, guid: 5c1ac4a4720da5545910184a3410ad6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1212,6 +1223,9 @@ MonoBehaviour:
   ExitToLevelsBttn: {fileID: 769222127}
   curSceneName: 
   number: 0
+  isFrenzyMode: 0
+  frenzyScore: 0
+  frenzyScoreText: {fileID: 769222128}
 --- !u!4 &1940754451
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,7 +1239,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1940754452
 MonoBehaviour:
@@ -1327,7 +1341,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2037116053
 PolygonCollider2D:

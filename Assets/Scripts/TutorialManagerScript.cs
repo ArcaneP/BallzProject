@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TutorialManagerScript : MonoBehaviour
 {
-    [SerializeField] GameObject PlayButton, LevelButton, OptionsButton, DemoButton, tutButton;
+    [SerializeField] GameObject PlayButton, LevelButton, OptionsButton, DemoButton, tutButton, FrenzyModeBttn;
     [SerializeField] bool hasCompletedTutorial;
     [SerializeField] GameObject hp, video, howto;
     [SerializeField] int currentStep = 0;
@@ -30,16 +30,18 @@ public class TutorialManagerScript : MonoBehaviour
 
     public void StartTutorial()
     {
+        PlayerPrefs.SetInt("isFrenzy", 0);
         PlayerPrefs.SetInt("lastSceneName", 1);
-        PlayerPrefs.SetInt("hp", 1);
-        GameManager.Instance.curHealth = 1;
-        GameManager.Instance.HealPlayer(3);
+        GameManager.Instance.curHealth = 999;
+        PlayerPrefs.SetInt("hp", 999);
+        //GameManager.Instance.HealPlayer(3);
         TimerScript.Instance.enabledTimer = false;
 
-        PlayButton?.SetActive(false);
-        LevelButton?.SetActive(false);
-        OptionsButton?.SetActive(false);
-        DemoButton?.SetActive(false);
+        FrenzyModeBttn.SetActive(false);
+        PlayButton.SetActive(false);
+        LevelButton.SetActive(false);
+        OptionsButton.SetActive(false);
+        DemoButton.SetActive(false);
     }
 
     public void NextStep()

@@ -155,7 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539066717}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &392174577
 MonoBehaviour:
@@ -335,7 +335,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539066717}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &514395450
 BoxCollider2D:
@@ -596,7 +596,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1701223387390091530, guid: 1af6d326bdf029c4d85a567cdecfebe4, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1701223387390091530, guid: 1af6d326bdf029c4d85a567cdecfebe4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,7 +848,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1406150634
 PrefabInstance:
@@ -859,7 +859,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4817219612884203609, guid: 5c1ac4a4720da5545910184a3410ad6f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4817219612884203609, guid: 5c1ac4a4720da5545910184a3410ad6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1024,11 +1024,10 @@ Transform:
   m_LocalScale: {x: 1.344, y: 1.344, z: 1.344}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1724944326}
   - {fileID: 514395449}
   - {fileID: 392174576}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1639927364
 PrefabInstance:
@@ -1127,7 +1126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3219699848757224817, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3219699848757224817, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1293,6 +1292,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1639927369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9015663088949541352, guid: 88ed3b026dbc86e469f5b81346258635, type: 3}
+  m_PrefabInstance: {fileID: 1639927364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724944325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,12 +1329,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724944325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01044002, y: -1.18, z: 0}
-  m_LocalScale: {x: 2.79, y: -0.084, z: 1}
+  m_LocalPosition: {x: -0.015968613, y: -1.5659199, z: 0}
+  m_LocalScale: {x: 3.74976, y: -0.112895995, z: 1.344}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539066717}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1724944327
 BoxCollider2D:
@@ -1369,7 +1379,8 @@ MonoBehaviour:
   image: {fileID: 0}
   counter: 0
   endGoal: 65
-  timer: 10
+  range: 4
+  timer: 8
   isDone: 0
 --- !u!1 &1940754449
 GameObject:
@@ -1412,6 +1423,9 @@ MonoBehaviour:
   ExitToLevelsBttn: {fileID: 1639927368}
   curSceneName: 
   number: 0
+  isFrenzyMode: 0
+  frenzyScore: 0
+  frenzyScoreText: {fileID: 1639927369}
 --- !u!4 &1940754451
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,7 +1439,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1940754452
 MonoBehaviour:
@@ -1522,7 +1536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2037116053
 PolygonCollider2D:

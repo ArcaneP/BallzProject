@@ -28,7 +28,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string curSceneName;
     [SerializeField] private int number;
-    
+
+    [SerializeField] bool isFrenzyMode = false;
+    [SerializeField] int frenzyScore;
+
+    [SerializeField] TextMeshProUGUI frenzyScoreText;
+
     void Start()
     {      
         Application.targetFrameRate = 90;
@@ -36,12 +41,54 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
-        if (PlayerPrefs.GetInt("hp") > maxHealth)
+        if (PlayerPrefs.GetInt("isFrenzy") == 0)
         {
-            curHealth = maxHealth;
-            PlayerPrefs.SetInt("hp", curHealth);
+            isFrenzyMode = false;
         }
+        else
+        {
+            isFrenzyMode = true;
+            frenzyScore = PlayerPrefs.GetInt("frenzyScore");
+        }
+
+        if(SceneManager.GetActiveScene().name == "menu")
+        {
+            if(PlayerPrefs.GetInt("savedFrenzyS") > 0)
+            {
+                frenzyScoreText.text = PlayerPrefs.GetInt("savedFrenzyS").ToString();
+            }
+            else
+            {
+                frenzyScoreText.text = " - ";
+            }
+        }
+        else //other than the menu load the score in levels pretty much
+        {
+            if(isFrenzyMode)
+            {
+
+                if (PlayerPrefs.GetInt("frenzyScore") > 0)
+                {
+                    frenzyScoreText.text = PlayerPrefs.GetInt("frenzyScore").ToString();
+                }
+                else
+                {
+                    frenzyScoreText.text = " 0 ";
+                }
+            }
+        }
+
+
+        if(SceneManager.GetActiveScene().name != "demo")
+        {
+            //BLOCK HEALTH FROM BEING MORE THAN MAX UNLESS TUTORIAL 
+            if (PlayerPrefs.GetInt("hp") > maxHealth)
+            {
+                curHealth = maxHealth;
+                PlayerPrefs.SetInt("hp", curHealth);
+            }
+        }
+
 
         
         if(PlayerPrefs.GetInt("hp") > 0)
@@ -82,6 +129,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //private void FixedUpdate()
+    //{
+    //    if(losescreen != null)
+    //    {
+    //        if(curHealth > 0) { losescreen.SetActive(false); }
+    //    }
+    //}
 
     public void ChangeLevelIndex()
     {
@@ -134,8 +188,8 @@ public class GameManager : MonoBehaviour
             }
 
         }
-
-        if(curHealth == 0)
+        
+        if(curHealth == 0 && losescreen != null)
         {
             losescreen.SetActive(true);
             //GameOver();
@@ -149,7 +203,11 @@ public class GameManager : MonoBehaviour
 
             if(PlayerPrefs.GetInt("lastSceneName") != 0)
             {
-                // uncomment to fix if bugs
+                PlayerPrefs.SetInt("isFrenzy", 0);
+                isFrenzyMode = false;
+                Debug.Log("FrenzyMode Disabled");
+                PlayerPrefs.SetInt("frenzyScore" , 0);
+
                 Debug.Log("level " + PlayerPrefs.GetInt("lastSceneName"));
                 SceneManager.LoadScene("level " + PlayerPrefs.GetInt("lastSceneName"));
 
@@ -195,10 +253,9 @@ public class GameManager : MonoBehaviour
             curHealth -= damage;
             PlayerPrefs.SetInt("hp", curHealth);
 
-            //EditorApplication.isPaused = true;
-
             if (PlayerPrefs.GetInt("hp") > 0)
             {
+                
                 Scene scene = SceneManager.GetActiveScene(); 
                 SceneManager.LoadScene(scene.name);
 
@@ -210,7 +267,7 @@ public class GameManager : MonoBehaviour
 
         if (curHealth <= 0 && PlayerPrefs.GetInt("hp") <= 0)
         {
-            GameOver();
+                GameOver();
         }
 
 
@@ -243,21 +300,45 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         if(!FinishLine.Instance.isDone) 
-        { 
+        {
             Debug.Log("Say Hola once");
             SoundManager.Instance.PlayDefeatSFX();
             ClearBalls();
             losescreen.SetActive(true);
+            if (isFrenzyMode) { PlayerPrefs.SetInt("frenzyScore", frenzyScore); } else { frenzyScoreText.enabled = false; }
+
         }
+    }
+
+    public void PlayFrenzy()
+    {
+        if(curHealth > 0)
+        {
+            Debug.Log("FRENZY MODEE!!! ");
+            PlayerPrefs.SetInt("isFrenzy", 1);
+            PlayerPrefs.SetInt("frenzyScore", 0);
+            SceneManager.LoadScene("level 1");
+
+        }
+        else{ AdsInitializer.Instance.ShowNoHealthUI(); }
+
     }
 
     public void Win()
     {
         Debug.Log("Say Hi once");
+        if (isFrenzyMode) 
+        {
+            frenzyScore++;
+            Debug.Log("fernzyscore: " + frenzyScore);
+            if (isFrenzyMode) { PlayerPrefs.SetInt("frenzyScore", frenzyScore); }
+        }
+
         SoundManager.Instance.PlayerWinSFX();
         ClearBalls();
         winscreen.SetActive(true);
         losescreen.SetActive(false);
+
     }
 
     private void ClearBalls()
@@ -290,11 +371,30 @@ public class GameManager : MonoBehaviour
 
     private void LoadLevelMenu() 
     {
+        if (isFrenzyMode)
+        {
+            if (PlayerPrefs.GetInt("frenzyScore") > PlayerPrefs.GetInt("savedFrenzyS")) 
+            {
+                PlayerPrefs.SetInt("savedFrenzyS", frenzyScore);
+            }
+            PlayerPrefs.SetInt("frenzyScore", 0);
+        }
+
         SceneManager.LoadScene("levels");
     }
 
     public void SimpleLoadScene(string sceneName)
     {
+
+        if (isFrenzyMode)
+        {
+            if (PlayerPrefs.GetInt("frenzyScore") > PlayerPrefs.GetInt("savedFrenzyS"))
+            {
+                PlayerPrefs.SetInt("savedFrenzyS", frenzyScore);
+            }
+            PlayerPrefs.SetInt("frenzyScore", 0);
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 }

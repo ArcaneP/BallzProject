@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/testTimer.unity
+    guid: 9977c9e379d46fb48b6bd52861cbd47c
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 06bbf87509980be4980bf041f985ac63

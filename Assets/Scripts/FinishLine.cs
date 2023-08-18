@@ -14,10 +14,10 @@ public class FinishLine : MonoBehaviour
     public Image image;
     public int counter;
     public int endGoal;
-    private int range = 2;
+   [SerializeField ]private int range = 2;
 
     private bool startcount;
-    [SerializeField] float timer = 6;
+   [SerializeField] float timer;
 
     private float startTimer;
 
@@ -31,7 +31,16 @@ public class FinishLine : MonoBehaviour
 
     private void Awake()
     {
-        timer = 6;
+        if(PlayerPrefs.GetInt("isFrenzy") == 1)
+        {
+            range = 0;
+            timer = 6;
+        }
+        else
+        {
+            //range = 4;
+            //timer = 10;
+        }
 
         curFillAmountText = GameObject.FindGameObjectWithTag("fillText").GetComponent<TextMeshProUGUI>();
         image = GameObject.FindGameObjectWithTag("fillicon").GetComponent<Image>();

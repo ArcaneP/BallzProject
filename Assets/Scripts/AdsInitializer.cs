@@ -12,15 +12,18 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     public static AdsInitializer Instance;
 
-    [SerializeField] private GameObject showADbutton, getHealthUI; //only show when health is bellow max
+    [SerializeField] private GameObject showADbutton, getHealthUI; //only show when health is bellow max;
+
+    public int maxAdFreeMode = 5;
+    public int curTimesAdFree = 0;
 
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        /*if (Input.GetKeyUp(KeyCode.R))
         {
             GameManager.Instance.TakeDamage(1);
-        }
+        }*/
 
 
         if (SceneManager.GetActiveScene().name == "menu")
@@ -118,6 +121,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     {
         Debug.Log("OnUnityAdsAdLoaded");
         Advertisement.Show(placementId, this); //not this
+
+        AdsInitializer.Instance.curTimesAdFree = 0;
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
@@ -169,6 +174,12 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         {
             GameManager.Instance.HealPlayer(3);
             PlayerPrefs.SetInt("hp", GameManager.Instance.curHealth);
+
+            if(GameManager.Instance.losescreen != null)
+            {
+                GameManager.Instance.losescreen.SetActive(false);   
+            }
+
         }
         else
         {
@@ -204,7 +215,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
     void OnBannerError(string message)
     {
-
+        Debug.Log("Banner Error:" + message);
     }
 
 }
