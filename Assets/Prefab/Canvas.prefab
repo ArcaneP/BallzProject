@@ -1845,7 +1845,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PRESS
+  m_text: 'FILL
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6700773338134843a5ae31220745a35, type: 2}
   m_sharedMaterial: {fileID: -2645696905836597515, guid: a6700773338134843a5ae31220745a35, type: 2}
@@ -1982,7 +1984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LEVEL
+  m_text: 'LEVEL ?
 
     COMPLETE'
   m_isRightToLeft: 0
@@ -2087,6 +2089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leveltext: {fileID: 3219699848426373783}
   levelNum: 0
+  screentype: 1
 --- !u!1 &3219699848481677978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,6 +2227,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3219699848481677978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2728704596906773261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,6 +2365,7 @@ GameObject:
   - component: {fileID: 3219699848757224819}
   - component: {fileID: 3219699848757224780}
   - component: {fileID: 3219699848757224816}
+  - component: {fileID: 3140228251950665774}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2462,6 +2478,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSceneName: 
   number: 0
+--- !u!114 &3140228251950665774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3219699848757224781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213730427c31e3c48b9737b5afca52d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3219699848788327952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3092,7 @@ GameObject:
   - component: {fileID: 3219699849005394759}
   - component: {fileID: 3219699849005394752}
   - component: {fileID: 6635041213119299121}
+  - component: {fileID: 8660839312222617383}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3119,7 +3148,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=70%>LEVEL \n<size=100%>FAILED"
+  m_text: '<size=70%>LEVEL ?
+
+    <size=100%>FAILED'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3208,6 +3239,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8660839312222617383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3219699849005394754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab849a018da29324b8c74bb2e0073c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leveltext: {fileID: 3219699849005394752}
+  levelNum: 0
+  screentype: 0
 --- !u!1 &3219699849384999453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,7 +3473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 0.70980394, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5283,7 +5329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2177542281536958689
 RectTransform:
   m_ObjectHideFlags: 0

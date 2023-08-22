@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,22 @@ public class TutorialManagerScript : MonoBehaviour
     [SerializeField] GameObject hp, video, howto;
     [SerializeField] int currentStep = 0;
     bool[] stepCompleted = new bool[4];
+
+    public static TutorialManagerScript Instance { get; private set; }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -76,12 +93,6 @@ public class TutorialManagerScript : MonoBehaviour
                         Debug.Log("step3 Completed");
                         DemoButton.SetActive(true);
                         break;
-                    //case 4:
-                    //    howto.SetActive(false);
-                    //    video.SetActive(false);
-                    //    tutButton.SetActive(false);
-                    //    Debug.Log("step4 Completed");
-                    //    break;
                     default:
                         break;
                 }
@@ -91,7 +102,7 @@ public class TutorialManagerScript : MonoBehaviour
 
     private void DisableHowTo()
     {
-        howto.GetComponent<Image>().enabled = false;
+        //howto.GetComponent<Image>().enabled = false;    
     }
 
     public void CompleteStep(int step)

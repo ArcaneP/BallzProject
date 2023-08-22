@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4133682565003137599}
   - component: {fileID: 4133682565003137598}
   - component: {fileID: -1441852791553616954}
+  - component: {fileID: 1039488673976497626}
   m_Layer: 0
   m_Name: Circle
   m_TagString: golyo
@@ -205,10 +206,10 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0.9
   m_Material: {fileID: 6200000, guid: 7783b5d0833fce249ae90f4784b252fd, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-1441852791553616954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +222,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26411e84e17c03e4b8d0b898a5684323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1039488673976497626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133682565003137593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a87e907a3d82047a5283a7870feabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 15
+  isLogging: 0
+  rb: {fileID: 4133682565003137598}
+  maxLoggedVelocity: 0

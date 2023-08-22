@@ -1,11 +1,19 @@
 using UnityEngine;
 using TMPro;
+using System.Drawing;
+
+public enum Screentype
+{
+    lose,win
+}
 
 public class GetLevelNumber : MonoBehaviour
 {
     public TextMeshProUGUI leveltext;
 
     public int levelNum;
+
+    [SerializeField] Screentype screentype;
 
     void Start()
     {
@@ -19,9 +27,20 @@ public class GetLevelNumber : MonoBehaviour
 
             if (extractedLevelNum > 0)
             {
-                levelNum = extractedLevelNum;
-                // Set the text of the TextMeshProUGUI component
-                leveltext.text = "LEVEL " + levelNum + "\nCOMPLETE";
+                switch (screentype)
+                {
+                    case Screentype.lose:
+                            levelNum = extractedLevelNum;
+                            // Set the text of the TextMeshProUGUI component
+                            leveltext.text = "<size=70%>LEVEL " + levelNum +  "\n<size=100%> FAILED";
+                        break;
+                    case Screentype.win:
+                        levelNum = extractedLevelNum;
+                        // Set the text of the TextMeshProUGUI component
+                        leveltext.text = "LEVEL " + levelNum + "\nCOMPLETE";
+                        break;
+                }
+
             }
         }
     }
